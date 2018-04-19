@@ -39,7 +39,7 @@ time = setInterval(function(){
 			console.log("connection OK");
 			var collection = db.collection('balance');
 			web3.eth.accounts.forEach(function(account){
-				balance1 = web3.eth.getBalance(account);
+				balance1 = web3.fromWei(web3.eth.getBalance(account), "ether");
 				var user1 = {
 					name: account,
 					balance: balance1.toString(10),
@@ -56,7 +56,7 @@ time = setInterval(function(){
 			client.close();
 		}
 	});
-}, 30000);
+}, 10000);
 
 app.get('/balance', function(req, res) {
 	mongoClient.connect(urlMongo, function(err, client) {
