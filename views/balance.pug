@@ -1,0 +1,30 @@
+html
+	head
+		title= title
+		include style.pug
+	body
+		div.row
+			each doc in docs
+				div.col-md-6
+					p= doc.name
+					p= doc.balance
+					p= doc.date
+				div.col-md-6
+					form(method='POST' action='/send')
+						input#name.form-control(type='hidden', placeholder='address' name='name' value=doc.name)
+						div.form-group
+							label(for='address') destinataire:
+							input#address.form-control(type='text', placeholder='address' name='address')
+						div.form-group
+							label(for='mount') Montant:
+							input#mount.form-control(type='text', placeholder='Montant' name='mount')
+						div.form-group
+							label(for='pw') Password:
+							input#pw.form-control(type='password' name='password')
+						div.form-group
+							label(for='pw2') Confirm Password:
+							input#pw2.form-control(type='password' name='confirmPassword')
+							button.btn.btn-primary(type='submit') Envoyer
+					hr
+					
+		include script.pug

@@ -1,0 +1,2 @@
+./geth --datadir eth_data init genesis.json
+./geth --datadir eth_data --networkid 123 --rpc --verbosity 1 console
